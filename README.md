@@ -1,16 +1,14 @@
-This guide details how to set up logging from your host to Google Drive. Your group has to do this so that we can periodically grade your logs. It may take up to 15 minutes to complete (sorry).
+## This guide details how to set up logging from your host to a spreadsheet in Google Drive.
 
-	Note: Commands in this format should be run in the terminal on your OpenVZ Host.
+On the Proxmox host, begin by downloading the repository: 
 
-Begin by downloading the repository: 
-
-	sudo apt-get install git
-	git clone https://github.com/ecthros/102
+	apt-get install git
+	git clone https://github.com/UMD-ACES/Health_Logs
 
 Now that you've downloaded the code, install the necessary dependencies:
 
-	cd 102
-	sudo ./setup.sh
+	cd Health_Logs
+	./setup.sh
 
 Head to the <a href=https://console.developers.google.com/apis/api/drive/overview>Google Developers Console</a>. Click on "Create Project" in the top right corner. Then select "Create a Project". Name the project anything (I named mine "Hacs 102 Group 2K).
 
