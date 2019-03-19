@@ -44,7 +44,7 @@ Where you need to replace the things inside the angle brackets (and the angle br
 
 3. data is comma-separated values for your data, for example, "Toby,George,Matt,Louis-Henri". If I wanted to update the sheet with all the TAs' names, I would use the following command:
 
-	log -k /root/stuff/hacs.json -s https://docs.google.com/spreadsheets/d/1H6uXIIxRPm4aSsxijklrm0BSoowdGrPDT-xr219kH-I/edit#gid=0 -d "Toby,George,Matt,Louis-Henri"
+	log -k /root/stuff/hacs.json -s https://docs.google.com/spreadsheets/d/1H6uXIIxRPm4aSdxijklrm0BSoowdGrPDT-xr219kH-I/edit#gid=0 -d "Toby,George,Matt,Louis-Henri"
 
 
 You've finished!! Now you need to figure out how often you want to run the logging command and which logs you want to update.
