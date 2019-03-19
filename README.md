@@ -10,7 +10,7 @@ Now that you've downloaded the code, install the necessary dependencies:
 	cd Health_Logs
 	./setup.sh
 
-Head to the <a href=https://console.developers.google.com/apis/api/drive/overview>Google Developers Console</a>. Click on "Create Project" in the top right corner. Then select "Create a Project". Name the project anything (I named mine "Hacs 102 Group 2K).
+Head to the <a href=https://console.developers.google.com/apis/api/drive/overview>Google Developers Console</a>. Click on "Select a Project" in the top right corner. Then select "New Project". Name the project anything (e.g. HACS Project Health Logs).
 
 ![image](https://cloud.githubusercontent.com/assets/14065974/22453687/95824976-e74e-11e6-87fe-7fd09ae55345.png)
 
