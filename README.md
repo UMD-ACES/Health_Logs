@@ -10,9 +10,9 @@ Now that you've downloaded the code, install the necessary dependencies:
 	cd Health_Logs
 	./setup.sh
 
-Head to the <a href="https://console.developers.google.com/apis/library/drive.googleapis.com?q=Google%20Drive">Google Developers Console</a>. Click on "Select a Project" in the top right corner. Then select "New Project". Name the project anything (e.g. HACS Project Health Logs).
+Head to the <a href="https://console.developers.google.com/apis/library/sheets.googleapis.com?q=Sheets">Google Developers Console</a>. Click on "Select a Project" in the top right corner. Then select "New Project". Name the project anything (e.g. HACS Project Health Logs).
 
-Wait for the project to load, and then next to "Google Drive API", make sure to click "Enable". If you are not directed to the Google Drive API, simply click this <a href="https://console.developers.google.com/apis/library/drive.googleapis.com?q=Google%20Drive">link</a>
+Wait for the project to load, and then next to "Google Drive API", make sure to click "Enable". If you are not directed to the Google Drive API, simply click this <a href="https://console.developers.google.com/apis/library/sheets.googleapis.com?q=Sheets">link</a>
 
 - Click on one of the tabs on the left labeled "Credentials". 
 - Click on “Create Credentials”. You will then skip this procedure by clicking on "service account" (second line)
