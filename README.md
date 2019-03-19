@@ -10,21 +10,18 @@ Now that you've downloaded the code, install the necessary dependencies:
 	cd Health_Logs
 	./setup.sh
 
-Head to the <a href=https://console.developers.google.com/apis/library/drive.googleapis.com?q=Google%20Drive>Google Developers Console</a>. Click on "Select a Project" in the top right corner. Then select "New Project". Name the project anything (e.g. HACS Project Health Logs).
+Head to the <a href="https://console.developers.google.com/apis/library/drive.googleapis.com?q=Google%20Drive">Google Developers Console</a>. Click on "Select a Project" in the top right corner. Then select "New Project". Name the project anything (e.g. HACS Project Health Logs).
 
-![image](images/New_Project.png)
+Wait for the project to load, and then next to "Google Drive API", make sure to click "Enable". If you are not directed to the Google Drive API, simply click this <a href="https://console.developers.google.com/apis/library/drive.googleapis.com?q=Google%20Drive">link</a>
 
-Wait for the project to load, and then next to "Google Drive API", make sure to click "Enable":
-
-![image](images/Enable_Google_Drive_API.png)
-
-Click on one of the tabs on the left labeled "Credentials". Choose “Create Credentials > Service Account Key”.
-
-![image](https://cloud.githubusercontent.com/assets/14065974/22453376/7b2b506a-e74c-11e6-95a6-33cb8318966d.png)
-
-Select "Compute Engine Default service account" and click "Create". A .json file will be downloaded.
-
-![image](https://cloud.githubusercontent.com/assets/14065974/22453807/95c3e81c-e74f-11e6-80af-0376334e2e80.png)
+- Click on one of the tabs on the left labeled "Credentials". 
+- Click on “Create Credentials”. You will then skip this procedure by clicking on "service account" (second line)
+- Click on "Create Service Account" 
+  - Makeup a name for the service account display name
+  - No need for a description
+- Click on "Create"
+- Simply click on "Continue" when it asks you for "Service account permissions"
+- Under "Create Key", click on "Create Key". Select JSON and download the file.
 
 Now that you've downloaded the .json file, you need to move the file to your host. There are a number of ways to do this - either using scp or uploading the file to dropbox and using wget. If you have port forwarding enabled, you could also copy and paste. You will need the location of this file for later.
 
