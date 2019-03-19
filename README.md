@@ -22,6 +22,7 @@ Wait for the project to load, and then next to "Google Drive API", make sure to 
 - Click on "Create"
 - Simply click on "Continue" when it asks you for "Service account permissions"
 - Under "Create Key", click on "Create Key". Select JSON and download the file.
+- Click on "Done"
 
 Now that you've downloaded the .json file, you need to move the file to your host. There are a number of ways to do this - either using scp or uploading the file to dropbox and using wget. If you have port forwarding enabled, you could also copy and paste. You will need the location of this file for later.
 
