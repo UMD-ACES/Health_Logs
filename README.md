@@ -16,7 +16,7 @@ Head to the <a href=https://console.developers.google.com/apis/library/drive.goo
 
 Wait for the project to load, and then next to "Google Drive API", make sure to click "Enable":
 
-![image](https://cloud.githubusercontent.com/assets/14065974/22453698/b5fe0e42-e74e-11e6-862f-cda06bc661e2.png)
+![image](images/Enable_Google_Drive_API.png)
 
 Click on one of the tabs on the left labeled "Credentials". Choose “Create Credentials > Service Account Key”.
 
