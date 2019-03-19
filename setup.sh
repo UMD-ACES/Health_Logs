@@ -1,6 +1,6 @@
 #!/bin/bash
-sudo apt update
-sudo apt-get install python3-pip python3-dev libssl-dev libffi-dev curl
+apt-get update
+apt-get install python3-pip python3-dev libssl-dev libffi-dev curl sudo
 
 sudo -H pip3 install setuptools==33.1.1
 sudo -H pip3 install pyopenssl
