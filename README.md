@@ -1,53 +1,48 @@
 ## This guide details how to set up logging from your host to a spreadsheet in Google Drive.
 
-On the Proxmox host, begin by downloading the repository: 
+1. Go to the [Google APIs Console](https://console.developers.google.com/)
+2. Click the dropdown menu in the top left corner to select a project.
+3. In the top right corner of the popup, click _Create a new project_.
+4. Click _Enable API_. Search for and enable the Google Drive and Google Sheets APIs.
+5. Create credentials for a _Web Server_ to access _Application Data_.
+6. Name the service account and grant it a _Project Role_ of _Editor_.
+7. Download the JSON file.
+8. Copy the JSON to your code directory and rename it to `health_log_creds.json`.
+9. Find the `client_email` variable inside `health_log_creds.json`. 
+10. Back in your spreadsheet, click the Share button in the top right, and paste the client email into the People field to give it edit rights. Hit Send.
+11. Download `pip3` for Python
+```
+sudo apt update
+sudo apt install python3-pip
+```
+12. Download the `gspread` and `oauth2client` Python libraries
+```
+pip3 install gspread oauth2client
+```
+13. Copy the following code into your Python health script.
+```
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
-	apt-get install git
-	git clone https://github.com/UMD-ACES/Health_Logs
+# use creds to create a client to interact with the Google Drive and Google Sheets API
+scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
+creds = ServiceAccountCredentials.from_json_keyfile_name('health_log_creds.json', scope)
+client = gspread.authorize(creds)
 
-Now that you've downloaded the code, install the necessary dependencies:
+# Put the name of your spreadsheet here
+sheet = client.open("<Spreadsheet Name>").sheet1
 
-	cd Health_Logs
-	./setup.sh
+# Example of how to insert a row
+row = ["I'm","inserting","a","row","into","a,","Spreadsheet","with","Python"]
+index = 1
+sheet.insert_row(row, index)
 
-Head to the <a href="https://console.developers.google.com/apis/library/sheets.googleapis.com?q=Sheets">Google Developers Console</a>. Click on "Select a Project" in the top right corner. Then select "New Project". Name the project anything (e.g. HACS Project Health Logs).
+# Example of how to delete a row. This deletes the first row.
+sheet.delete_row(1)
 
-Wait for the project to load, and then next to "Google Drive API", make sure to click "Enable". If you are not directed to the Google Drive API, simply click this <a href="https://console.developers.google.com/apis/library/sheets.googleapis.com?q=Sheets">link</a>
+# Example of how to update a single cell
+sheet.update_cell(1, 1, "Update top left cell")
 
-- Click on one of the tabs on the left labeled "Credentials". 
-- Click on “Create Credentials”. You will then skip this procedure by clicking on "service account" (second line)
-- Click on "Create Service Account" 
-  - Makeup a name for the service account display name
-  - No need for a description
-- Click on "Create"
-- Simply click on "Continue" when it asks you for "Service account permissions"
-- Under "Create Key", click on "Create Key". Select JSON and download the file.
-- Click on "Done"
-
-Now that you've downloaded the .json file, you need to move the file to your host. There are a number of ways to do this - either using scp or uploading the file to dropbox and using wget. If you have port forwarding enabled, you could also copy and paste. You will need the location of this file for later.
-
-You're almost there! Open the .json file, and you'll see an email associated with the "client_email" field. Copy it and share ALL your google sheets (or just your folder) with that email.
-
-![image](https://cloud.githubusercontent.com/assets/14065974/22453754/0ec0ccb8-e74f-11e6-8b5f-f841df75119d.png)
-
-
-To run the script, use:
-
-	log -k <yourJSONfile> -s <sheetid> -d <data>
-
-Where you need to replace the things inside the angle brackets (and the angle brackets themselves!) with the following data:
-
-1. The JSON file should be the absolute path to the file, like:
-	/root/stuff/hacs.json
-
-2. And your sheetid is the URL of the Google Sheet. This is the full url, including https:// and edit#gid=0.
-
-3. data is comma-separated values for your data, for example, "Toby,George,Matt,Louis-Henri". If I wanted to update the sheet with all the TAs' names, I would use the following command:
-
-	log -k /root/stuff/hacs.json -s https://docs.google.com/spreadsheets/d/1H6uXIIxRPm4aSdxijklrm0BSoowdGrPDT-xr219kH-I/edit#gid=0 -d "Toby,George,Matt,Louis-Henri"
-
-
-You've finished!! Now you need to figure out how often you want to run the logging command and which logs you want to update.
-
-If you want, feel free to play around with the -w and -d options. For help, type:
-	log --help
+# How to get the number of rows in the spreadsheet
+sheet.row_count
+```
