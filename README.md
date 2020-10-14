@@ -22,11 +22,10 @@ pip3 install gspread oauth2client
 13. Copy the following code into your Python health script.
 ```
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-
+from google.oauth2.service_account import Credentials
 # use creds to create a client to interact with the Google Drive and Google Sheets API
 scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name('health_log_creds.json', scope)
+creds = Credentials.from_service_account_file('health_log_creds.json', scope)
 client = gspread.authorize(creds)
 
 # Put the name of your spreadsheet here
